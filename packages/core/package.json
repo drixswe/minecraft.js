@@ -6,8 +6,7 @@
     ".": {
       "import": "./src/index.ts",
       "require": "./src/index.js"
-    },
-    "./package.json": "./package.json"
+    }
   },
   "dependencies": {
     "protocol": "workspace:*",
