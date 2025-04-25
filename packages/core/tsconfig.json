@@ -4,6 +4,10 @@
 	"compilerOptions": {
 		"allowJs": true,
 		"outDir": "./dist",
-		"jsx": "preserve"
+    "baseUrl": ".",
+    "paths": {
+      "@config/*": ["src/config/*"],
+      "@server/*": ["src/server/*"],
+    },
 	}
 }

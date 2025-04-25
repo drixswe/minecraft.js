@@ -7,6 +7,7 @@
 	},
 	"workspaces": [
 		"docs",
+    "playground",
 		"packages/*"
 	],
 	"dependencies": {
