@@ -1,0 +1,15 @@
+{
+	"name": "root",
+	"private": true,
+	"scripts": {
+		"docs": "bun run --filter docs dev",
+		"playground": "bun run --filter playground dev"
+	},
+	"workspaces": [
+    "docs",
+    "packages/*"
+  ],
+	"dependencies": {
+		"@biomejs/biome": "1.9.4"
+	}
+}
