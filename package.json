@@ -6,10 +6,11 @@
 		"playground": "bun run --filter playground dev"
 	},
 	"workspaces": [
-    "docs",
-    "packages/*"
-  ],
+		"docs",
+		"packages/*"
+	],
 	"dependencies": {
-		"@biomejs/biome": "1.9.4"
+		"@biomejs/biome": "1.9.4",
+		"@changesets/cli": "^2.29.2"
 	}
 }

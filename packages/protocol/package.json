@@ -1,0 +1,13 @@
+{
+  "name": "protocol",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
