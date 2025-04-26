@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
-export const schema = z.object({
+export const configSchema = z.object({
 	address: z.string().optional().default('0.0.0.0'),
-	port: z.number().optional().default(3000)
+	port: z.number().optional().default(25565),
 }).default({})
 
-export type Config = z.infer<typeof schema>
+export type Config = z.infer<typeof configSchema>

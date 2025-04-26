@@ -1,4 +1,4 @@
-import{ schema, type Config } from '@config/config.js'
+import { type Config, configSchema } from '@config/config.js'
 import type { TCPSocketListener } from 'bun'
 
 export class Server {
@@ -6,31 +6,27 @@ export class Server {
 	config: Config
 
 	constructor(config?: Config) {
-		this.config = schema.parse(config)
+		this.config = configSchema.parse(config)
 	}
 
-	start() {
+	public start() {
 		this.listener = Bun.listen({
 			hostname: this.config.address,
 			port: this.config.port,
 			socket: {
-				data(socket) {
-					console.log(
-						`Socket drained: ${socket.remoteAddress}:${socket.remotePort}`
-					)
+				data: (socket, data) => {
+					console.log(`Received data from ${socket.remoteAddress}:${socket.remotePort}`)
 				},
-				open(socket) {
-					console.log(
-						`Socket opened: ${socket.remoteAddress}:${socket.remotePort}`
-					)
-				}
+				open: (socket) => {
+					console.log(`Client connected: ${socket.remoteAddress}:${socket.remotePort}`)
+				},
 			}
 		})
 
 		console.log(`Server running at ${this.config.address}:${this.config.port}`)
 	}
 
-	stop() {
+	public stop() {
 		if (this.listener) {
 			this.listener.stop(true)
 			this.listener.unref()
