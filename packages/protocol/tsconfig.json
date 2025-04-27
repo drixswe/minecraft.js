@@ -3,6 +3,12 @@
 	"include": ["src"],
 	"compilerOptions": {
 		"allowJs": true,
-		"outDir": "./dist"
+		"outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@buffer/*": ["src/buffer/*"],
+      "@inbound/*": ["src/inbound/*"],
+      "@outbound/*": ["src/outbound/*"],
+    },
 	}
 }

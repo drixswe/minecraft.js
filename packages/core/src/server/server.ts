@@ -25,10 +25,10 @@ export class Server {
 
 					if (client) {
 						const buffer = Buffer.from(data.buffer)
-            const packet = decode(buffer)
-            socket.data = { ...packet }
+						const packet = decode(buffer)
+						socket.data = { ...packet }
 
-            console.log(`Received packet with id: ${socket.data.id}`)
+						console.log(`Received packet with id: ${socket.data.id}`)
 					}
 				},
 				open: (socket) => {
