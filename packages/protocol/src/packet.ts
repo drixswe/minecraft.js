@@ -1,21 +1,24 @@
-import type { DataBuf } from '@buffer/buffer'
+import { DataBuf } from '@buffer/buffer'
 
-export class Packet {
-	id: number
+export abstract class Packet {
+  id: number
   length: number
-	data: DataBuf
+  data: DataBuf
 
-	constructor(id: number, length: number, data: DataBuf) {
-		this.id = id
+  constructor(id: number, length: number, data: DataBuf) {
+    this.id = id
     this.length = length
-		this.data = data
-	}
+    this.data = data
+  }
 }
 
-export interface OutboundPacket extends Packet {
-	write: () => Buffer
+export interface ClientPacket {
+  id: number
+  read: (data: DataBuf) => void
+  toPacket: () => Packet
 }
 
-export interface InboundPacket extends Packet {
-	read: (data: DataBuf) => void
+export interface ServerPacket {
+  id: number
+  write: () => Buffer
 }

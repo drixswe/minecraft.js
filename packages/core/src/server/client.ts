@@ -1,5 +1,5 @@
 import type { Socket } from 'bun'
-import { type OutboundPacket, type Packet, State } from 'protocol'
+import { type ClientPacket, type Packet, State } from 'protocol'
 import { encode } from './codec'
 
 export class Client {
@@ -11,8 +11,8 @@ export class Client {
 		this.state = State.HANDSHAKE
 	}
 
-	public sendPacket(packet: OutboundPacket): void {
-		const buffer = encode(packet)
+	public sendPacket(packet: ClientPacket): void {
+		const buffer = encode(packet.toPacket())
 
 		const view = new DataView(
 			buffer.buffer,
@@ -24,7 +24,7 @@ export class Client {
 		this.socket.flush()
 	}
 
-	public sendPackets(packets: OutboundPacket[]): void {
+	public sendPackets(packets: ClientPacket[]): void {
 		for (const packet of packets) {
 			this.sendPacket(packet)
 		}

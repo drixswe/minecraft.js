@@ -6,16 +6,16 @@ const CONTINUE_BIT = 0x80
 export class DataBuf {
   private view: DataView
   private offset: number
-  data: Buffer
+  buffer: Buffer
 
-  constructor(data = Buffer.alloc(0), offset = 0) {
-    this.data = data
-    this.view = new DataView(data.buffer, offset, data.byteLength)
+  constructor(buffer = Buffer.alloc(0), offset = 0) {
+    this.buffer = buffer
+    this.view = new DataView(buffer.buffer, offset, buffer.byteLength)
     this.offset = offset
   }
 
   public readByte(): number {
-    if (this.offset + DataSize.Byte > this.data.byteLength) {
+    if (this.offset + DataSize.Byte > this.buffer.byteLength) {
       throw new Error('Buffer underflow')
     }
 
@@ -23,7 +23,7 @@ export class DataBuf {
   }
 
   public writeByte(value: number): void {
-    if (this.offset + DataSize.Byte > this.data.byteLength) {
+    if (this.offset + DataSize.Byte > this.buffer.byteLength) {
       throw new Error('Buffer overflow')
     }
 
@@ -31,21 +31,21 @@ export class DataBuf {
   }
 
   public readBytes(length: number): Buffer {
-    if (this.offset + length > this.data.byteLength) {
+    if (this.offset + length > this.buffer.byteLength) {
       throw new Error('Buffer underflow')
     }
 
-    const result = this.data.slice(this.offset, this.offset + length)
+    const result = this.buffer.slice(this.offset, this.offset + length)
     this.offset += length
     return result
   }
 
   public writeBytes(value: Buffer): void {
-    if (this.offset + value.length > this.data.byteLength) {
+    if (this.offset + value.length > this.buffer.byteLength) {
       throw new Error('Buffer overflow')
     }
 
-    const uintArray = new Uint8Array(this.data)
+    const uintArray = new Uint8Array(this.buffer)
     value.copy(uintArray, this.offset)
     this.offset += value.length
   }
@@ -59,7 +59,7 @@ export class DataBuf {
   }
 
   public readInt(): number {
-    if (this.offset + DataSize.Int > this.data.byteLength) {
+    if (this.offset + DataSize.Int > this.buffer.byteLength) {
       throw new Error('Buffer underflow')
     }
 
@@ -69,7 +69,7 @@ export class DataBuf {
   }
 
   public writeInt(value: number): void {
-    if (this.offset + DataSize.Int > this.data.byteLength) {
+    if (this.offset + DataSize.Int > this.buffer.byteLength) {
       throw new Error('Buffer overflow')
     }
 
@@ -78,7 +78,7 @@ export class DataBuf {
   }
 
   public readShort(): number {
-    if (this.offset + DataSize.Short > this.data.byteLength) {
+    if (this.offset + DataSize.Short > this.buffer.byteLength) {
       throw new Error('Buffer underflow')
     }
 
@@ -88,7 +88,7 @@ export class DataBuf {
   }
 
   public writeShort(value: number): void {
-    if (this.offset + DataSize.Short > this.data.byteLength) {
+    if (this.offset + DataSize.Short > this.buffer.byteLength) {
       throw new Error('Buffer overflow')
     }
 
@@ -97,7 +97,7 @@ export class DataBuf {
   }
 
   public readLong(): bigint {
-    if (this.offset + DataSize.Long > this.data.byteLength) {
+    if (this.offset + DataSize.Long > this.buffer.byteLength) {
       throw new Error('Buffer underflow')
     }
 
@@ -107,7 +107,7 @@ export class DataBuf {
   }
 
   public writeLong(value: bigint): void {
-    if (this.offset + DataSize.Long > this.data.byteLength) {
+    if (this.offset + DataSize.Long > this.buffer.byteLength) {
       throw new Error('Buffer overflow')
     }
 
@@ -116,7 +116,7 @@ export class DataBuf {
   }
 
   public readFloat(): number {
-    if (this.offset + DataSize.Float > this.data.byteLength) {
+    if (this.offset + DataSize.Float > this.buffer.byteLength) {
       throw new Error('Buffer underflow')
     }
 
@@ -126,7 +126,7 @@ export class DataBuf {
   }
 
   public writeFloat(value: number): void {
-    if (this.offset + DataSize.Float > this.data.byteLength) {
+    if (this.offset + DataSize.Float > this.buffer.byteLength) {
       throw new Error('Buffer overflow')
     }
 
@@ -135,7 +135,7 @@ export class DataBuf {
   }
 
   public readDouble(): number {
-    if (this.offset + DataSize.Double > this.data.byteLength) {
+    if (this.offset + DataSize.Double > this.buffer.byteLength) {
       throw new Error('Buffer underflow')
     }
 
@@ -145,7 +145,7 @@ export class DataBuf {
   }
 
   public writeDouble(value: number): void {
-    if (this.offset + DataSize.Double > this.data.byteLength) {
+    if (this.offset + DataSize.Double > this.buffer.byteLength) {
       throw new Error('Buffer overflow')
     }
 
@@ -174,7 +174,7 @@ export class DataBuf {
   public writeString(value: string): void {
     const bytes = Buffer.from(value, 'utf-8')
     const size = string(value)
-    if (this.offset + size > this.data.byteLength) {
+    if (this.offset + size > this.buffer.byteLength) {
       throw new Error('Buffer overflow')
     }
 
@@ -202,7 +202,7 @@ export class DataBuf {
 
   public writeVarInt(value: number): void {
     const size = varInt(value)
-    if (this.offset + size > this.data.byteLength) {
+    if (this.offset + size > this.buffer.byteLength) {
       throw new Error('Buffer overflow')
     }
 
@@ -239,7 +239,7 @@ export class DataBuf {
 
   public writeVarLong(value: bigint): void {
     const size = varLong(value)
-    if (this.offset + size > this.data.byteLength) {
+    if (this.offset + size > this.buffer.byteLength) {
       throw new Error('Buffer overflow')
     }
 

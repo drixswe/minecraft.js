@@ -1,14 +1,11 @@
-import { type OutboundPacket, type Packet, DataBuf } from 'protocol'
+import { type Packet, DataBuf } from 'protocol'
 
 export const encode = (packet: Packet): Buffer => {
-	const outboundPacket = packet as OutboundPacket
-	const packetBuffer = outboundPacket.write()
-
 	const header = new DataBuf()
 	header.writeVarInt(packet.length)
 	header.writeVarInt(packet.id)
 
-	return Buffer.from(Uint8Array.from([...header.data, ...packetBuffer]))
+	return Buffer.from(Uint8Array.from([header.buffer, packet.data]))
 }
 
 export const decode = (buffer: Buffer): Packet => {
