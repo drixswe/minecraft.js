@@ -2,28 +2,30 @@ const SEGMENT_BITS = 0x7f
 const CONTINUE_BIT = 0x80
 
 export class PacketData {
-	data: Buffer
-	offset: number
+	private data: Buffer
+	private view: DataView
+	private offset: number
 
-	constructor(data: Buffer) {
+	constructor(data: Buffer, offset = 0) {
 		this.data = data
-		this.offset = 0
+		this.view = new DataView(data.buffer, offset, data.byteLength)
+		this.offset = offset
 	}
 
 	private readByte(): number {
-		if (this.offset >= this.data.length) {
+		if (this.offset >= this.data.byteLength) {
 			throw new Error('Buffer underflow')
 		}
 
-		return this.data[this.offset++]
+		return this.view.getUint8(this.offset++)
 	}
 
 	private writeByte(value: number): void {
-		if (this.offset >= this.data.length) {
+		if (this.offset >= this.data.byteLength) {
 			throw new Error('Buffer overflow')
 		}
 
-		this.data[this.offset++] = value
+		this.view.setUint8(this.offset++, value)
 	}
 
 	public readVarInt(): number {
