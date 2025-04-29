@@ -24,9 +24,8 @@ This package contains content related to the [Minecraft Protocol](https://minecr
 These packets are initiated by the client and sent to the server. They include actions such as player movement, chat messages, and interactions with the game world. In the protocol wiki, they are referred to as `serverbound`, meaning they are bound for the server.
 
 ```mermaid
-graph TD
-  A[Client] -->|Sends| B[Server]
-  B -->|Processes| C[Game Logic]
+graph LR
+  [Client] -->|Sends packet| [Server]
 ```
 
 #### Inbound Packets
@@ -34,7 +33,6 @@ graph TD
 These packets are initiated by the server and sent to the client. They include updates such as world changes, player positions, and game events. In the protocol wiki, they are referred to as `clientbound`, meaning they are bound for the client.
 
 ```mermaid
-graph TD
-  D[Server] -->|Sends| E[Client]
-  E -->|Renders| F[Game Display]
+graph LR
+  [Server] -->|Sends packet| [Client]
 ```
