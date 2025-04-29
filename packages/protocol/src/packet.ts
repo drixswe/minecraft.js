@@ -1,4 +1,4 @@
-import { DataBuf } from '@buffer/buffer'
+import type { DataBuf } from '@buffer/buffer'
 
 export abstract class Packet {
   id: number
@@ -12,13 +12,12 @@ export abstract class Packet {
   }
 }
 
-export interface ClientPacket {
+export interface InboundPacket {
   id: number
   read: (data: DataBuf) => void
-  toPacket: () => Packet
 }
 
-export interface ServerPacket {
+export interface OutboundPacket {
   id: number
-  write: () => Buffer
+  build: () => Packet
 }

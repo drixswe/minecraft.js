@@ -51,6 +51,3 @@ export const stringArray = (array: string[]): number => {
 	return size
 }
 
-export const prefixedBytes = (bytes: Uint8Array): number => {
-	return varInt(bytes.length) + bytes.length
-}
