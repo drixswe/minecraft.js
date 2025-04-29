@@ -25,7 +25,7 @@ These packets are initiated by the client and sent to the server. They include a
 
 ```mermaid
 graph LR
-  [Client] -->|Sends packet| [Server]
+  Client -->|Sends packet| Server
 ```
 
 #### Inbound Packets
@@ -34,5 +34,5 @@ These packets are initiated by the server and sent to the client. They include u
 
 ```mermaid
 graph LR
-  [Server] -->|Sends packet| [Client]
+  Server -->|Sends packet| Client
 ```
