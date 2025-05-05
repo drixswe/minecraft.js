@@ -1,11 +1,12 @@
-export abstract class Packet {
+export interface IPacket {
   id: number
   length: number
-  data: DataView
+  data: Buffer
+}
 
-  constructor(id: number, length: number, data: DataView) {
-    this.id = id
-    this.length = length
-    this.data = data
-  }
+export abstract class Packet {
+	abstract id: number
+
+	write?(): Buffer
+	read?(data: Buffer): void
 }

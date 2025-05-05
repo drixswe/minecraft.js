@@ -1,6 +1,6 @@
 import { type Config, configSchema } from '@config/config.js'
 import type { TCPSocketListener } from 'bun'
-import type { Packet } from 'protocol'
+import type { IPacket } from 'protocol'
 import { Client } from './client'
 import { decode } from './codec'
 
@@ -14,7 +14,7 @@ export class Server {
 	}
 
 	public start(): void {
-		this.listener = Bun.listen<Packet>({
+		this.listener = Bun.listen<IPacket>({
 			hostname: this.config.address,
 			port: this.config.port,
 			socket: {

@@ -1,21 +1,29 @@
-import type { Packet } from 'protocol'
+import type { IPacket, Packet } from 'protocol'
 
 export const encode = (packet: Packet): Buffer => {
-	const header = Buffer.alloc(0)
-	const view = new DataView(header.buffer, header.byteOffset, header.byteLength)
-	view.setInt8(0, packet.length)
-	view.setInt8(1, packet.id)
-	return Buffer.from(Uint8Array.from([header.buffer, packet.data]))
+	if (!packet.write) {
+		throw new Error('Packet does not have a write method')
+	}
+
+	const data = packet.write()
+	const length = data.length + 1
+
+	const buffer = Buffer.alloc(length + 1)
+	buffer.writeUInt8(length, 0)
+	buffer.writeUInt8(packet.id, 1)
+	data.copy(new Uint8Array(buffer), 2)
+
+	return buffer
 }
 
-export const decode = (buffer: Buffer): Packet => {
-	const view = new DataView(buffer.buffer, buffer.byteOffset, buffer.byteLength)
-	const packetLength = view.getInt8(0)
-	const packetId = view.getInt8(1)
+export const decode = (buffer: Buffer): IPacket => {
+  const length = buffer.readUInt8(0)
+  const packetId = buffer.readUInt8(1)
+  const payload = buffer.slice(2, 2 + length - 1)
 
-	return {
-		id: packetId,
-		length: packetLength,
-		data: view
-	}
+  return {
+    id: packetId,
+    length,
+    data: payload
+  }
 }
