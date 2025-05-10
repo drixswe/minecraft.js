@@ -5,6 +5,10 @@
 		"allowJs": true,
 		"outDir": "./dist",
     "baseUrl": ".",
-    "paths": {},
+    "paths": {
+      "@/*": ["src/*"],
+      "@config/*": ["src/config/*"],
+      "@server/*": ["src/server/*"]
+    },
 	}
 }

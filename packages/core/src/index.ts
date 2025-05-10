@@ -1,1 +1,1 @@
-console.log('Hello from core!');
+export { Server } from '@server/server'

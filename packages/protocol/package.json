@@ -3,14 +3,18 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts"
+  },
   "exports": {
     ".": {
-      "import": "./src/index.ts",
-      "require": "./src/index.js"
+      "import": "./dist/index.ts",
+      "types": "./dist/index.d.ts"
     }
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "tsup": "^8.4.0"
   },
   "peerDependencies": {
     "typescript": "^5"

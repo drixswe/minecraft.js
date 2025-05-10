@@ -2,6 +2,7 @@
 	"name": "root",
 	"private": true,
 	"scripts": {
+    "build": "bun run --filter './packages/*' build",
 		"docs": "bun run --filter docs dev",
 		"playground": "bun run --filter playground dev"
 	},
