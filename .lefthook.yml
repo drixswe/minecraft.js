@@ -1,0 +1,12 @@
+# lefthook.yml
+
+colors: true
+
+pre-commit:
+  commands:
+    format:
+      run: bun format
+      stage_fixed: true
+    lint:
+      run: bun lint
+      stage_fixed: true

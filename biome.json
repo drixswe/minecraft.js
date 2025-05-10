@@ -25,9 +25,9 @@
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single",
-      "trailingCommas": "none",
-      "indentWidth": 2,
-      "semicolons": "asNeeded"
+			"trailingCommas": "none",
+			"indentWidth": 2,
+			"semicolons": "asNeeded"
 		}
 	}
 }

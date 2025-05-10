@@ -1,22 +1,24 @@
 {
-  "name": "protocol",
-  "version": "0.0.0",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "build": "tsup src/index.ts --format esm --dts"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.ts",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "devDependencies": {
-    "@types/bun": "latest",
-    "tsup": "^8.4.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  }
+	"name": "protocol",
+	"version": "0.0.0",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"build": "tsup src/index.ts --format esm --dts",
+    "format": "bunx biome format --write ./src",
+    "lint": "bunx biome lint --error-on-warnings ./src"
+	},
+	"exports": {
+		".": {
+			"import": "./dist/index.ts",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"tsup": "^8.4.0"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	}
 }

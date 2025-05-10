@@ -1,14 +1,14 @@
 {
-  "extends": "../../tsconfig.base.json",
+	"extends": "../../tsconfig.base.json",
 	"include": ["src"],
 	"compilerOptions": {
 		"allowJs": true,
 		"outDir": "./dist",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@config/*": ["src/config/*"],
-      "@server/*": ["src/server/*"]
-    },
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"],
+			"@config/*": ["src/config/*"],
+			"@server/*": ["src/server/*"]
+		}
 	}
 }

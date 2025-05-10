@@ -1,4 +1,5 @@
-# This a basic dependabot.yml file for updating dependencies.
+# dependabot.yml
+
 version: 2
 
 updates:

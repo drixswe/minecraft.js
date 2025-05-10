@@ -1,18 +1,19 @@
 {
-  "name": "playground",
-  "module": "src/index.ts",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "dev": "bun run src/index.ts"
-  },
-  "dependencies": {
-    "minecraft.js": "workspace:*"
-  },
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  }
+	"name": "playground",
+	"module": "src/index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"dev": "bun run src/index.ts",
+    "format": "bunx biome format --write ./src"
+	},
+	"dependencies": {
+		"minecraft.js": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	}
 }
