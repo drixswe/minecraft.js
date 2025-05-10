@@ -1,0 +1,11 @@
+# This a basic dependabot.yml file for updating dependencies.
+version: 2
+
+updates:
+  - package-ecosystem: 'bun'
+    directories:
+      - '**/*'
+    schedule:
+      interval: 'weekly'
+    ignore:
+      - dependency-name: '@types/bun'
