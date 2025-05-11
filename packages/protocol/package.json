@@ -5,8 +5,8 @@
 	"private": true,
 	"scripts": {
 		"build": "tsup src/index.ts --format esm --dts",
-    "format": "bunx biome format --write ./src",
-    "lint": "bunx biome lint --error-on-warnings ./src"
+		"format": "bunx biome format --write ./src",
+		"lint": "bunx biome lint --error-on-warnings ./src"
 	},
 	"exports": {
 		".": {

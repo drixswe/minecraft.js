@@ -1,1 +1,4 @@
-console.log('Hello from playground!')
+import { Server } from 'minecraft.js'
+
+const server = new Server()
+server.start()

@@ -8,10 +8,10 @@
     "lint": "bunx biome lint --error-on-warnings ./src"
 	},
 	"exports": {
-		".": {
-			"import": "./dist/index.ts",
-			"types": "./dist/index.d.ts"
-		}
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
 	},
 	"dependencies": {
 		"protocol": "workspace:*",
