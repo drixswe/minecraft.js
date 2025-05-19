@@ -15,6 +15,6 @@
 	],
 	"dependencies": {
 		"@biomejs/biome": "1.9.4",
-		"lefthook": "^1.11.12"
+		"lefthook": "^1.11.13"
 	}
 }
