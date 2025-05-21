@@ -1,10 +1,14 @@
 {
 	"extends": "../../tsconfig.base.json",
-	"include": ["src"],
 	"compilerOptions": {
 		"allowJs": true,
 		"outDir": "./dist",
 		"baseUrl": ".",
-		"paths": {}
+		"paths": {
+      "@/*": ["src/*"],
+      "@clientbound/*": ["src/clientbound/*"],
+      "@packet/*": ["src/packet/*"],
+      "@serverbound/*": ["src/serverbound/*"],
+    }
 	}
 }
