@@ -1,5 +1,5 @@
+import { type Packet, State } from '@minecraft.js/protocol'
 import type { Socket } from 'bun'
-import { State, type Packet } from 'protocol'
 import { encode } from './codec'
 
 export class Client {

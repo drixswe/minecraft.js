@@ -15,7 +15,7 @@
 	},
 	"dependencies": {
 		"picocolors": "^1.1.1",
-		"protocol": "workspace:*",
+		"@minecraft.js/protocol": "workspace:*",
 		"zod": "^3.24.4"
 	},
 	"devDependencies": {

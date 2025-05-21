@@ -1,4 +1,4 @@
-import { PacketData, type IPacket, type Packet } from 'protocol'
+import { PacketData, type IPacket, type Packet } from '@minecraft.js/protocol'
 
 export const decode = (buffer: Buffer): IPacket => {
 	const data = new PacketData(buffer)
