@@ -1,8 +1,9 @@
 import { type Config, configSchema } from '@config/config'
 import type { Socket, TCPSocketListener } from 'bun'
 import { Prompt } from './console/prompt'
-import type { Client } from './client'
+import { Client } from './client'
 import { decode } from './codec'
+import { handlePacket } from './handler/handler'
 
 export class Server {
 	private listener?: TCPSocketListener
@@ -22,13 +23,29 @@ export class Server {
 			port: this.config.port,
 			socket: {
 				data: (socket, data) => {
-					const packet = decode(data)
-					console.log(packet)
+					const client = this.getClient(socket as Socket)
+					if (!client) return
+
+					// TODO: rework this, rn works
+					while (client.buffer.length < data.length) {
+						const packet = decode(data)
+						if (!packet) break
+						handlePacket(client, packet)
+					}
 				},
-				open: (socket) => {},
-				close: (socket, error) => {},
-				drain: (socket) => {},
-				error: (socket, error) => {}
+				open: (socket) => {
+					const client = new Client(socket as Socket)
+					this.clients.add(client)
+				},
+				close: (socket) => {
+					const client = this.getClient(socket as Socket)
+					if (client) this.clients.delete(client)
+				},
+				error: (socket, error) => {
+					const client = this.getClient(socket as Socket)
+					if (client) this.clients.delete(client)
+					this.prompt.error(error.message)
+				}
 			}
 		})
 
