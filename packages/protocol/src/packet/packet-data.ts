@@ -83,7 +83,6 @@ export class PacketData {
 
 	writeInt(value: number): void {
 		this.buffer = Buffer.concat([this.buffer, Buffer.from([value])])
-
 		this.offset += 1
 	}
 
@@ -103,23 +102,16 @@ export class PacketData {
 	}
 
 	readLong(): number {
-		const value = this.buffer.readUInt32BE(this.offset)
-		this.offset += 4
-		return value
+		const value = this.buffer.readBigInt64BE(this.offset)
+		this.offset += 8
+		return Number(value)
 	}
 
 	writeLong(value: number): void {
-		this.buffer = Buffer.concat([
-			this.buffer,
-			Buffer.from([
-				(value >> 24) & 0xff,
-				(value >> 16) & 0xff,
-				(value >> 8) & 0xff,
-				value & 0xff
-			])
-		])
-
-		this.offset += 4
+		const buf = Buffer.alloc(8)
+		buf.writeBigInt64BE(BigInt(value))
+		this.buffer = Buffer.concat([this.buffer, buf])
+		this.offset += 8
 	}
 
 	readString(): string {
