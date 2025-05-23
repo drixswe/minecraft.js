@@ -30,12 +30,46 @@ export class PacketData {
 		let temp = value
 		const bytes: number[] = []
 
-		while (temp !== 0) {
+		do {
 			let byte = temp & SEGMENT_BITS
 			temp >>>= 7
 			if (temp !== 0) byte |= CONTINUE_BIT
 			bytes.push(byte)
-		}
+		} while (temp !== 0)
+
+		this.buffer = Buffer.concat([this.buffer, Buffer.from(bytes)])
+		this.offset += bytes.length
+	}
+
+	readVarLong(): number {
+		let numRead = 0
+		let result = 0
+		let read: number
+		let shift = 0
+
+		do {
+			read = this.buffer.readUInt8(this.offset++)
+			const value = read & SEGMENT_BITS
+			result |= value << shift
+
+			shift += 7
+			numRead++
+			if (numRead > 10) throw new Error('VarLong is too big')
+		} while ((read & CONTINUE_BIT) !== 0)
+
+		return result
+	}
+
+	writeVarLong(value: number): void {
+		let temp = value
+		const bytes: number[] = []
+
+		do {
+			let byte = temp & SEGMENT_BITS
+			temp = Math.floor(temp / 128)
+			if (temp !== 0) byte |= CONTINUE_BIT
+			bytes.push(byte)
+		} while (temp !== 0)
 
 		this.buffer = Buffer.concat([this.buffer, Buffer.from(bytes)])
 		this.offset += bytes.length

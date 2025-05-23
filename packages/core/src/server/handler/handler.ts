@@ -1,10 +1,12 @@
-import { State, type IPacket } from '@minecraft.js/protocol'
+import { type IPacket, State } from '@minecraft.js/protocol'
 import type { Client } from '../client'
+import { handshakeHandlers } from './handshake'
 import type { PacketHandler } from './packet-handler'
+import { statusHandlers } from './status'
 
 const packetHandlers: Record<State, Record<number, PacketHandler>> = {
-	[State.Handshake]: {},
-	[State.Status]: {},
+	[State.Handshake]: handshakeHandlers,
+	[State.Status]: statusHandlers,
 	[State.Login]: {},
 	[State.Configuration]: {},
 	[State.Play]: {}

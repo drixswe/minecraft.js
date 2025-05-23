@@ -1,8 +1,8 @@
 import { type Config, configSchema } from '@config/config'
 import type { Socket, TCPSocketListener } from 'bun'
-import { Prompt } from './console/prompt'
 import { Client } from './client'
 import { decode } from './codec'
+import { Prompt } from './console/prompt'
 import { handlePacket } from './handler/handler'
 
 export class Server {
@@ -26,12 +26,8 @@ export class Server {
 					const client = this.getClient(socket as Socket)
 					if (!client) return
 
-					// TODO: rework this, rn works
-					while (client.buffer.length < data.length) {
-						const packet = decode(data)
-						if (!packet) break
-						handlePacket(client, packet)
-					}
+					const packet = decode(data)
+					handlePacket(client, packet)
 				},
 				open: (socket) => {
 					const client = new Client(socket as Socket)

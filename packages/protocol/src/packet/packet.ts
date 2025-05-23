@@ -1,5 +1,3 @@
-import type { PacketData } from './packet-data'
-
 export interface IPacket {
 	id: number
 	length: number
@@ -9,6 +7,6 @@ export interface IPacket {
 export abstract class Packet {
 	abstract id: number
 
-	read?(data: PacketData): void
+	read?(data: Buffer): void
 	write?(): Buffer
 }

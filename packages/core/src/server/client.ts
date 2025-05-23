@@ -5,12 +5,10 @@ import { encode } from './codec'
 export class Client {
 	socket: Socket
 	state: State
-	buffer: Buffer
 
 	constructor(socket: Socket) {
 		this.socket = socket
 		this.state = State.Handshake
-		this.buffer = Buffer.alloc(0)
 	}
 
 	sendPacket(packet: Packet): void {

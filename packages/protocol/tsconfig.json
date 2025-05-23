@@ -5,7 +5,6 @@
 		"outDir": "./dist",
 		"baseUrl": ".",
 		"paths": {
-      "@/*": ["src/*"],
       "@clientbound/*": ["src/clientbound/*"],
       "@packet/*": ["src/packet/*"],
       "@serverbound/*": ["src/serverbound/*"],
