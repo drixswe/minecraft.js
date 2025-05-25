@@ -1,0 +1,22 @@
+{
+  "name": "@minecraft.js/playground",
+  "version": "0.0.1",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run index.ts",
+    "format": "bunx biome format --write ./src",
+    "lint": "bunx biome lint --error-on-warnings ./src"
+  },
+  "dependencies": {
+    "minecraft.js": "workspace:*"
+  },
+  "devDependencies": {
+    "@tsconfig/bun": "^1.0.7",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/bun/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@inbound/*": ["./src/inbound/*"],
+      "@outbound/*": ["./src/outbound/*"]
+    }
+  }
+}

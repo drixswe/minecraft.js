@@ -1,0 +1,28 @@
+{
+  "name": "minecraft.js",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "bun run build.ts",
+    "format": "bunx biome format --write ./src",
+    "lint": "bunx biome lint --error-on-warnings ./src"
+  },
+  "dependencies": {
+    "@rocket/protocol": "workspace:*",
+    "zod": "^3.25.28"
+  },
+  "devDependencies": {
+    "@tsconfig/bun": "^1.0.7",
+    "@types/bun": "latest",
+    "bun-plugin-dts": "^0.3.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

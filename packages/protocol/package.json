@@ -1,0 +1,25 @@
+{
+  "name": "@minecraft.js/protocol",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "bun run build.ts",
+    "format": "bunx biome format --write ./src",
+    "lint": "bunx biome lint --error-on-warnings ./src"
+  },
+  "devDependencies": {
+    "@tsconfig/bun": "^1.0.7",
+    "@types/bun": "latest",
+    "bun-plugin-dts": "^0.3.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

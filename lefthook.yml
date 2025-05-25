@@ -1,0 +1,12 @@
+# Lefthook configuration file
+# https://lefthook.dev/configuration/
+
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      run: bun format
+      stage_fixed: true
+    lint:
+      run: bun lint
+      stage_fixed: true

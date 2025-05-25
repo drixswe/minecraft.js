@@ -1,0 +1,11 @@
+# Dependabot Configuration File
+
+version: 2
+updates:
+  - package-ecosystem: 'bun'
+    directories:
+      - '**/*'
+    schedule:
+      interval: 'weekly'
+    ignore:
+      - dependency-name: '@types/bun'
