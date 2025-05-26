@@ -1,0 +1,65 @@
+---
+title: Install minecraft.js
+sidebar:
+  label: Installation
+description: How to install the minecraft.js package
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+
+Welcome Minecraft enthusiasts! This is a guide on how to install the **minecraft.js** package, which allows you to create your own Minecraft server using JavaScript. The package is available on npm and can be installed using various package managers.
+
+- [Github Repository](https://github.com/drixswe/minecraft.js)
+- [NPM Package](https://www.npmjs.com/package/minecraft.js)
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) installed on your machine.
+- A text editor, such as [Visual Studio Code](https://code.visualstudio.com/), to write and edit your code.
+- An existing JavaScript or TypeScript project, or create a new one.
+
+### Installation
+
+Installing **minecraft.js** is quick and easy. Just run the following command for your favourite package manager in your project directory:
+
+<Tabs>
+  <TabItem label="npm" icon="npm">
+    ```shell
+    # Install the minecraft.js package using npm
+    npm install minecraft.js
+    ```
+  </TabItem>
+  <TabItem label="yarn" icon="seti:yarn">
+    ```shell
+    # Install the minecraft.js package using yarn
+    yarn add minecraft.js
+    ```
+  </TabItem>
+  <TabItem label="pnpm" icon="pnpm">
+    ```shell
+    # Install the minecraft.js package using pnpm
+    pnpm add minecraft.js
+    ```
+  </TabItem>
+  <TabItem label="bun" icon="bun">
+    ```shell
+    # Install the minecraft.js package using bun
+    bun add minecraft.js
+    ```
+  </TabItem>
+</Tabs>
+
+Congratulations! You have successfully installed the minecraft.js package. You can now start building your own Minecraft server using JavaScript.
+
+### Launch the server
+
+To launch the server, you can create a simple JavaScript or TypeScript file and import the [Server](/en/reference/server) class. Here is an example of how to do this:
+
+```javascript title="server.js"
+import { Server } from 'minecraft.js'
+
+const server = new Server()
+server.start()
+```
+
+Congratulations! You can now run this file using your terminal. To stop the server, you can use `Ctrl + C` in your terminal or call the `server.stop()` method in your code.

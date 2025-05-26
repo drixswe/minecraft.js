@@ -1,5 +1,5 @@
 {
-  "name": "@minecraft.js/docs",
+  "name": "docs",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@astrojs/starlight": "^0.34.3",
+    "@fontsource/inter": "^5.2.5",
+    "@fontsource/jetbrains-mono": "^5.2.5",
     "astro": "^5.6.1",
     "sharp": "^0.32.5"
   }

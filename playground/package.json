@@ -1,5 +1,5 @@
 {
-  "name": "@minecraft.js/playground",
+  "name": "playground",
   "version": "0.0.1",
   "module": "src/index.ts",
   "type": "module",

@@ -14,7 +14,7 @@
     "lint": "bunx biome lint --error-on-warnings ./src"
   },
   "dependencies": {
-    "@rocket/protocol": "workspace:*",
+    "@minecraft.js/protocol": "workspace:*",
     "zod": "^3.25.28"
   },
   "devDependencies": {

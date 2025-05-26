@@ -1,0 +1,11 @@
+:root {
+  --sl-font: 'Inter', sans-serif;
+}
+
+main {
+  font-family: var(--sl-font);
+}
+
+code {
+  font-family: 'JetBrains Mono', monospace;
+}
