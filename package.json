@@ -5,8 +5,7 @@
     "build": "bun run --filter './packages/*' build",
     "docs": "bun run --filter docs dev",
     "format": "bun --filter '*' format",
-    "lint": "bun --filter '*' lint",
-    "playground": "bun run --filter playground dev"
+    "lint": "bun --filter '*' lint"
   },
   "workspaces": [
     "docs",
