@@ -14,6 +14,9 @@
     "format": "bunx biome format --write ./src",
     "lint": "bunx biome lint --error-on-warnings ./src"
   },
+  "dependencies": {
+    "serio": "^3.0.1"
+  },
   "devDependencies": {
     "@tsconfig/bun": "^1.0.7",
     "@types/bun": "latest",

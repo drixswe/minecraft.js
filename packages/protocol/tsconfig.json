@@ -1,10 +1,12 @@
 {
   "extends": "@tsconfig/bun/tsconfig.json",
   "compilerOptions": {
+    "strictPropertyInitialization": false,
     "baseUrl": ".",
     "paths": {
       "@inbound/*": ["src/inbound/*"],
-      "@outbound/*": ["src/outbound/*"]
+      "@outbound/*": ["src/outbound/*"],
+      "@serialize/*": ["src/serialize/*"]
     }
   }
 }
