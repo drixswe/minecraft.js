@@ -18,7 +18,7 @@
     "serio": "^3.0.1"
   },
   "devDependencies": {
-    "@tsconfig/bun": "^1.0.7",
+    "@tsconfig/bun": "^1.0.8",
     "@types/bun": "latest",
     "bun-plugin-dts": "^0.3.0"
   },

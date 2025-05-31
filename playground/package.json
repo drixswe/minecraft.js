@@ -13,7 +13,7 @@
     "minecraft.js": "workspace:*"
   },
   "devDependencies": {
-    "@tsconfig/bun": "^1.0.7",
+    "@tsconfig/bun": "^1.0.8",
     "@types/bun": "latest"
   },
   "peerDependencies": {

@@ -18,7 +18,7 @@
     "zod": "^3.25.28"
   },
   "devDependencies": {
-    "@tsconfig/bun": "^1.0.7",
+    "@tsconfig/bun": "^1.0.8",
     "@types/bun": "latest",
     "bun-plugin-dts": "^0.3.0"
   },
