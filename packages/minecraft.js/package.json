@@ -16,7 +16,7 @@
   "dependencies": {
     "@minecraft.js/nbt": "workspace:*",
     "@minecraft.js/protocol": "workspace:*",
-    "zod": "^3.25.28"
+    "zod": "^3.25.46"
   },
   "devDependencies": {
     "@tsconfig/bun": "^1.0.8",
