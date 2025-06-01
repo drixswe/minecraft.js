@@ -19,10 +19,9 @@ export class TextComponent extends Builder<TextComponent> {
   }
 
   override toJSON(): string {
-    const properties = this.propertiesToJSON()
     return JSON.stringify({
       text: this.#content,
-      ...properties
+      ...this.propertiesToJSON()
     })
   }
 }

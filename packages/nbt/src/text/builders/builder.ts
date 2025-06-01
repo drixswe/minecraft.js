@@ -4,14 +4,37 @@ import { Flags } from '@text/format/flags'
 export abstract class Builder<T extends Builder<T>> {
   #extra: Builder<T>[] = []
   #color: string
-  #bold = false
-  #italic = false
-  #obfuscated = false
-  #strikethrough = false
-  #underlined = false
+  #bold: boolean
+  #italic: boolean
+  #obfuscated: boolean
+  #strikethrough: boolean
+  #underlined: boolean
 
-  append(component: Builder<T>): T {
+  // biome-ignore lint/suspicious/noExplicitAny: Allow any for generic type
+  append(component: Builder<any>): T {
     this.#extra.push(component)
+    return this as unknown as T
+  }
+
+  color(color: Color | string): T {
+    const isEnum = Object.values(Color).includes(color as Color)
+    const isHex = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(String(color))
+
+    if (!isEnum && !isHex) {
+      throw new Error(
+        `Invalid color: ${color}. Use a Color enum value or a valid hex code.`
+      )
+    }
+
+    let final = color
+    if (isEnum) {
+      final = Color[color as Color]
+        .toString()
+        .replace(/([a-z])([A-Z])/g, '$1_$2')
+        .toLowerCase()
+    }
+
+    this.#color = String(final)
     return this as unknown as T
   }
 
@@ -36,28 +59,6 @@ export abstract class Builder<T extends Builder<T>> {
       }
     }
 
-    return this as unknown as T
-  }
-
-  paint(color: Color | string): T {
-    const isEnum = Object.values(Color).includes(color as Color)
-    const isHex = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(String(color))
-
-    if (!isEnum && !isHex) {
-      throw new Error(
-        `Invalid color: ${color}. Use a Color enum value or a valid hex code.`
-      )
-    }
-
-    let final = color
-    if (isEnum) {
-      final = Color[color as Color]
-        .toString()
-        .replace(/([a-z])([A-Z])/g, '$1_$2')
-        .toLowerCase()
-    }
-
-    this.#color = String(final)
     return this as unknown as T
   }
 
