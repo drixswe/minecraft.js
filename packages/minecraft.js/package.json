@@ -14,6 +14,7 @@
     "lint": "bunx biome lint --error-on-warnings ./src"
   },
   "dependencies": {
+    "@minecraft.js/nbt": "workspace:*",
     "@minecraft.js/protocol": "workspace:*",
     "zod": "^3.25.28"
   },

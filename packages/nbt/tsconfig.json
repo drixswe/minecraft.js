@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/bun/tsconfig.json",
+  "compilerOptions": {
+    "strictPropertyInitialization": false,
+    "baseUrl": ".",
+    "paths": {
+      "@text/*": ["src/text/*"]
+    }
+  }
+}

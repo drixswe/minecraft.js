@@ -1,5 +1,5 @@
 {
-  "name": "@minecraft.js/protocol",
+  "name": "@minecraft.js/nbt",
   "version": "0.0.1",
   "type": "module",
   "private": true,
@@ -14,10 +14,7 @@
     "format": "bunx biome format --write ./src",
     "lint": "bunx biome lint --error-on-warnings ./src"
   },
-  "dependencies": {
-    "@minecraft.js/nbt": "workspace:*",
-    "serio": "^3.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@tsconfig/bun": "^1.0.8",
     "@types/bun": "latest",
