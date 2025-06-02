@@ -4,6 +4,7 @@
     "strictPropertyInitialization": false,
     "baseUrl": ".",
     "paths": {
+      "@common/*": ["src/common/*"],
       "@inbound/*": ["src/inbound/*"],
       "@outbound/*": ["src/outbound/*"],
       "@serialize/*": ["src/serialize/*"]

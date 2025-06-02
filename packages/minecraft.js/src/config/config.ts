@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from 'zod/v4'
 
 export const configSchema = z.object({
   address: z.string().default('127.0.0.1'),

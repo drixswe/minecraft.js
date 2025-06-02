@@ -1,5 +1,6 @@
 import { configSchema, type Config } from '@config/config'
 import net, { type Server as Listener } from 'node:net'
+import { Connection } from './connection'
 
 export class Server {
   private listener?: Listener
@@ -16,9 +17,10 @@ export class Server {
 
     this.listener = net
       .createServer((socket) => {
+        const connection = new Connection(socket)
+
         socket
           .on('data', (data) => console.log(data.buffer))
-          .on('connection', () => {})
           .on('error', () => {})
           .on('close', () => {})
       })
@@ -32,7 +34,7 @@ export class Server {
       throw new Error('Server is not running!')
     }
 
-    this.listener?.close()
-    this.listener?.unref()
+    this.listener.close()
+    this.listener.unref()
   }
 }
