@@ -1,27 +1,27 @@
 import { Builder } from '../builder'
 
 export class TextComponent extends Builder<TextComponent> {
-  #content: string
+  private content: string
 
   constructor(content: string | number) {
     super()
-    this.#content = content.toString()
+    this.content = content.toString()
   }
 
   appendNewLine(): this {
-    this.#content += '\n'
+    this.content += '\n'
     return this
   }
 
   appendSpace(): this {
-    this.#content += ' '
+    this.content += ' '
     return this
   }
 
   override toJSON(): string {
     return JSON.stringify({
-      text: this.#content,
-      ...this.propertiesToJSON()
+      text: this.content,
+      ...this.build()
     })
   }
 }

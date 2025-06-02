@@ -1,17 +1,17 @@
 import { Builder } from '../builder'
 
 export class KeybindComponent extends Builder<KeybindComponent> {
-  #keybind: string
+  private keybind: string
 
   constructor(keybind: string) {
     super()
-    this.#keybind = keybind
+    this.keybind = keybind
   }
 
   override toJSON(): string {
     return JSON.stringify({
-      keybind: this.#keybind,
-      ...this.propertiesToJSON()
+      keybind: this.keybind,
+      ...this.build()
     })
   }
 }

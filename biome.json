@@ -11,7 +11,8 @@
 	},
 	"formatter": {
 		"enabled": true,
-		"indentStyle": "space"
+		"indentStyle": "space",
+    "lineEnding": "lf"
 	},
 	"organizeImports": {
 		"enabled": true
@@ -22,6 +23,9 @@
 			"recommended": true,
       "style": {
         "useEnumInitializers": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off"
       }
 		}
 	},
@@ -33,5 +37,12 @@
       "semicolons": "asNeeded",
       "trailingCommas": "none"
 		}
-	}
+	},
+  "json": {
+    "formatter": {
+      "indentStyle": "space",
+      "indentWidth": 2,
+      "trailingCommas": "none"
+    }
+  }
 }
