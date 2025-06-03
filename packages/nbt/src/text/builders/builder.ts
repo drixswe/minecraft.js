@@ -10,18 +10,18 @@ interface Options {
   obfuscated?: boolean
 }
 
-export abstract class Builder<T extends Builder<T>> {
+export abstract class Builder {
   private options: Partial<Options> = {}
-  private extra: Builder<any>[] = []
+  private extra: Builder[] = []
 
-  append(component: Builder<any>): T {
+  append(component: Builder): this {
     this.extra.push(component)
-    return this as unknown as T
+    return this
   }
 
-  color(color: string | Color): T {
+  color(color: string | Color): this {
     const isEnum = Object.values(Color).includes(color as Color)
-    const isHex = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(String(color))
+    const isHex = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(color)
 
     if (!isEnum && !isHex) {
       throw new Error(
@@ -30,10 +30,10 @@ export abstract class Builder<T extends Builder<T>> {
     }
 
     this.options.color = color
-    return this as unknown as T
+    return this
   }
 
-  decorate(...flags: Flags[]): T {
+  decorate(...flags: Flags[]): this {
     for (const flag of flags) {
       switch (flag) {
         case Flags.Bold:
@@ -54,10 +54,10 @@ export abstract class Builder<T extends Builder<T>> {
       }
     }
 
-    return this as unknown as T
+    return this
   }
 
-  protected build(): Options & { extra?: Builder<T>[] } {
+  protected build(): Options & { extra?: Builder[] } {
     return {
       ...this.options,
       extra: this.extra.length > 0 ? this.extra : undefined

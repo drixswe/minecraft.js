@@ -1,6 +1,6 @@
 import { Builder } from '../builder'
 
-export class TextComponent extends Builder<TextComponent> {
+export class TextComponent extends Builder {
   private content: string
 
   constructor(content: string | number) {

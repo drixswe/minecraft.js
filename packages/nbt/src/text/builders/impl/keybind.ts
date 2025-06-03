@@ -1,6 +1,6 @@
 import { Builder } from '../builder'
 
-export class KeybindComponent extends Builder<KeybindComponent> {
+export class KeybindComponent extends Builder {
   private keybind: string
 
   constructor(keybind: string) {
