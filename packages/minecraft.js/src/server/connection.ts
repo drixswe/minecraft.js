@@ -1,4 +1,4 @@
-import { State, type Packet } from '@minecraft.js/protocol'
+import { State, type Partial } from '@minecraft.js/protocol'
 import type { Socket } from 'node:net'
 
 export class Connection {
@@ -10,14 +10,14 @@ export class Connection {
     this.state = State.Handshake
   }
 
-  sendPacket(packet: Packet) {
-    const buffer = packet.serialize()
+  sendPacket(partial: Partial) {
+    const buffer = partial.toPacket().serialize()
     this.socket.write(buffer)
   }
 
-  sendPackets(...packets: Packet[]) {
-    for (const packet of packets) {
-      this.sendPacket(packet)
+  sendPackets(...partials: Partial[]) {
+    for (const partial of partials) {
+      this.sendPacket(partial)
     }
   }
 }

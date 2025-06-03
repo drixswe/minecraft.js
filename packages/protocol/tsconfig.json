@@ -4,10 +4,8 @@
     "strictPropertyInitialization": false,
     "baseUrl": ".",
     "paths": {
-      "@common/*": ["src/common/*"],
-      "@inbound/*": ["src/inbound/*"],
-      "@outbound/*": ["src/outbound/*"],
-      "@serialize/*": ["src/serialize/*"]
+      "@packets/*": ["src/packets/*"],
+      "@serio/*": ["src/serio/*"]
     }
   }
 }
