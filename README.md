@@ -1,6 +1,6 @@
 <p align="center">
   <br/>
-  <a href="https://minecraftjs.org">minecraft.js</a> is a Minecraft server written in JavaScript &mdash;
+  <a href="https://discord.gg/E24y7tahTa">minecraft.js</a> is a Minecraft server written in JavaScript &mdash;
   <br/>
     unlock a new dimension of Minecraft boundless imagination.
   <br/><br/>
