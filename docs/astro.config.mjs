@@ -1,9 +1,23 @@
 // @ts-check
-import { defineConfig } from 'astro/config'
+import { defineConfig, fontProviders } from 'astro/config'
 import starlight from '@astrojs/starlight'
 
 // https://astro.build/config
 export default defineConfig({
+  experimental: {
+    fonts: [
+      {
+        provider: fontProviders.fontsource(),
+        name: 'Inter',
+        cssVariable: '--font-inter'
+      },
+      {
+        provider: fontProviders.fontsource(),
+        name: 'JetBrains Mono',
+        cssVariable: '--font-jetbrains-mono'
+      }
+    ]
+  },
   integrations: [
     starlight({
       title: 'minecraft.js',
@@ -32,21 +46,19 @@ export default defineConfig({
         {
           label: 'Getting Started',
           autogenerate: {
-            directory: 'basics',
+            directory: 'basics'
           }
         }
       ],
       expressiveCode: {
         styleOverrides: {
-          codeFontFamily: 'JetBrains Mono',
+          codeFontFamily: 'JetBrains Mono'
         }
       },
-      customCss: [
-        './src/styles/custom.css',
-        '@fontsource/inter/400.css',
-        '@fontsource/inter/600.css',
-        '@fontsource/jetbrains-mono/400.css'
-      ]
+      customCss: ['./src/styles/custom.css'],
+      components: {
+        Head: './src/components/Head.astro'
+      }
     })
   ]
 })

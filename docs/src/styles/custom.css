@@ -1,5 +1,5 @@
 :root {
-  --sl-font: 'Inter', sans-serif;
+  --sl-font: var(--font-inter);
 }
 
 main {
@@ -7,5 +7,5 @@ main {
 }
 
 code {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-jetbrains-mono);
 }
